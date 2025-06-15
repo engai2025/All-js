@@ -1,3 +1,4 @@
+
  # Js_Exercise_03
  
  ***
@@ -9,7 +10,7 @@
  ## Group A
  
  ***
- [github Link](https://github.com/engai2025/Js_Exercise_01)
+ [github Link](https://github.com/engai2025/All-js)
  
  ***
  
@@ -17,12 +18,18 @@
  
  ~~~ Javascript
  
+
+
+
+// Exercise 3: 
 let isSunny = true;
 let isWeekend = true;
 
 let canGoToBeach = isSunny && isWeekend;
 
 console.log("Can go to the beach:", canGoToBeach); // true haddii labaduba true yihiin
+
+
 
  
  
@@ -34,7 +41,7 @@ console.log("Can go to the beach:", canGoToBeach); // true haddii labaduba true 
  ## Output
  
  ***
- ![Output The Code](../Assets/Capture.PNG)
+ ![Output The Code](../../All-js/03-Exercise/Assets/Capture.PNG)
  ***
  
   
