@@ -44,7 +44,7 @@ console.log("x ** y =", x ** y);   // 343 (Exponentiation: 7^3)
  ## Output
  
  ***
- ![Output The Code](../../All-js/01-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../01-Exercise/Assets/Capture.PNG)
  ***
  
   
