@@ -41,7 +41,7 @@ console.log("Can go to the beach:", canGoToBeach); // true haddii labaduba true 
  ## Output
  
  ***
- ![Output The Code](../../All-js/03-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../03-Exercise/Assets/Capture.PNG)
  ***
  
   

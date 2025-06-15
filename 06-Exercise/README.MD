@@ -36,7 +36,7 @@ console.log("Layli 6:", colors);
  ## Output
  
  ***
- ![Output The Code](../../All-js/06-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../06-Exercise/Assets/Capture.PNG)
  ***
  
   

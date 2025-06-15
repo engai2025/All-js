@@ -45,7 +45,7 @@ console.log("a <= b     =>", a <= b);     // true
  ## Output
  
  ***
- ![Output The Code](../../All-js/02-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../02-Exercise/Assets/Capture.PNG)
  ***
  
   

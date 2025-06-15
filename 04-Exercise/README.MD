@@ -57,7 +57,7 @@ console.log(adds(100, 250));   // 350
  ## Output
  
  ***
- ![Output The Code](../../All-js/04-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../04-Exercise/Assets/Capture.PNG)
  ***
  
   

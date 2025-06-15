@@ -41,7 +41,7 @@ console.log("Layli 8:", car.Year);
  ## Output
  
  ***
- ![Output The Code](../../All-js/08-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../08-Exercise/Assets/Capture.PNG)
  ***
  
   

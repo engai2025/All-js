@@ -42,7 +42,7 @@ cars.start();
  ## Output
  
  ***
- ![Output The Code](../../All-js/09-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../09-Exercise/Assets/Capture.PNG)
  ***
  
   

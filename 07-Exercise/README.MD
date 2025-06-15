@@ -37,7 +37,7 @@ console.log("Layli 7:", color);
  ## Output
  
  ***
- ![Output The Code](../../All-js/07-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../07-Exercise/Assets/Capture.PNG)
  ***
  
   

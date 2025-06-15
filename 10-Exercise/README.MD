@@ -43,7 +43,7 @@ console.log("Layli 10:", library[0].title, library[1].author);
  ## Output
  
  ***
- ![Output The Code](../../All-js/10-Exercise/Assets/Capture.PNG)
+ ![Output The Code](../10-Exercise/Assets/Capture.PNG)
  ***
  
   
