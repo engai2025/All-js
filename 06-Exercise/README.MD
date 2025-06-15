@@ -10,7 +10,7 @@
  ## Group A
  
  ***
- [github Link](https://github.com/engai2025/Js_Exercise_01)
+ [github Link](https://github.com/engai2025/All-js)
  
  ***
  
