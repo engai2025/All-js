@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Post App</title>
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 600px;
+      margin: auto;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      border: none;
+    }
+    .post {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 8px;
+    }
+    .post img {
+      max-width: 100%;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> Blog Post Project</h2>
+
+  <input type="text" id="title" placeholder="Geli Cinwaanka">
+  <input type="text" id="imageUrl" placeholder="Geli URL-ka Sawirka">
+  <textarea id="description" placeholder="Geli Sharaxaada" rows="4"></textarea>
+  <button onclick="savePost()">Kaydi Post-ga</button>
+
+  <h3>Posts-kaaga</h3>
+  <div id="postsContainer"></div>
+
+  <script src="main.js"></script>
+  </body>
+  </html>

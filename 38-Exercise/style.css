@@ -1,0 +1,179 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    background-color: #333;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.brand-title {
+    font-size: 1.5em;
+    line-height: 60px;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    padding: 0 10px;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    line-height: 60px;
+    display: block;
+}
+
+.navbar-links a:hover {
+    background-color: #444;
+}
+
+/* Toggle Button */
+.toggle-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+
+
+
+    section {
+      height: 100vh;
+      padding: 60px 20px 20px 20px;
+    }
+
+    #home {
+      background: url('https://picsum.photos/id/1011/1000/600') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-shadow: 1px 1px 5px black;
+    }
+
+  #services {
+        background: green;
+
+      color: #333;
+    }
+      #about{
+        background: red;
+
+      }
+      h2{
+        text-align: center;
+      }
+      #pp{
+        color: white;
+        font-size: 30px;
+      }
+
+    #footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+  #footer p{
+    margin-block: 100px;
+  }
+    p {
+      max-width: 600px;
+      margin: auto;
+    }
+
+/* Media Queries for Mobile Screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+        opacity: 0;
+    }
+
+    .navbar-links ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar-links li {
+        text-align: center;
+    }
+
+    .navbar-links a {
+        padding: 10px;
+        line-height: 20px;
+    }
+
+    .navbar.active .navbar-links {
+        max-height: 300px;
+        opacity: 1;
+        transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+    }
+
+    /* Change the toggle button bars for the open state */
+    .navbar.active .toggle-button .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar.active .toggle-button .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .navbar.active .toggle-button .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
