@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.video-player-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.video-wrapper {
+    text-align: center;
+}
+
+.video-element {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    margin-bottom: 24px;
+}
+
+.video-info {
+    margin-bottom: 24px;
+}
+
+.video-info h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+.video-info p {
+    font-size: 16px;
+    color: #718096;
+}
+
+.progress-container {
+    margin-bottom: 24px;
+}
+
+.progress-bar {
+    background: #e2e8f0;
+    border-radius: 8px;
+    height: 8px;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: height 0.2s ease;
+}
+
+.progress-bar:hover {
+    height: 12px;
+}
+
+.progress {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    width: 0%;
+    height: 100%;
+    transition: width 0.1s linear;
+    border-radius: 8px;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #718096;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.control-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.play-btn {
+    width: 72px;
+    height: 72px;
+    font-size: 28px;
+}
+
+.additional-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.volume-container,
+.speed-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.volume-container i,
+.speed-container i {
+    color: #4a5568;
+    font-size: 18px;
+}
+
+#volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px;
+    height: 6px;
+    background: #e2e8f0;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+#volume-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+#speed-select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background-color: white;
+    color: #4a5568;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+#speed-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+@media (max-width: 640px) {
+    .video-player-container {
+        padding: 20px;
+    }
+    
+    .additional-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .volume-container,
+    .speed-container {
+        justify-content: center;
+    }
+    
+    .controls {
+        gap: 12px;
+    }
+    
+    .control-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 16px;
+    }
+    
+    .play-btn {
+        width: 64px;
+        height: 64px;
+        font-size: 24px;
+    }
+}
