@@ -1,132 +1,101 @@
- document.addEventListener('DOMContentLoaded', () => {
-    const fromLanguageSelect = document.getElementById('fromLanguage');
-    const toLanguageSelect = document.getElementById('toLanguage');
-    const textToTranslateInput = document.getElementById('textToTranslate');
-    const translateBtn = document.getElementById('translateBtn');
-    const translatedTextOutput = document.getElementById('translatedText');
+ // Select the language dropdown elements from the DOM
+const fromLang = document.querySelector("#from-lang");
+const ToLang = document.querySelector("#to-lang");
 
-    // RapidAPI key iyo host
-    // MUHIIM: Furihii API-ga waa mid furan. Ha u isticmaalin codsi rasmi ah!
-    const RAPIDAPI_KEY = '1dfe0cf2afmsh8dd581ff6cbb2e2p1f22dejsn557b3c87ddcd';
-    const RAPIDAPI_HOST = 'microsoft-translator-text-api3.p.rapidapi.com';
+// Wait for the DOM to fully load before executing fetchData
+document.addEventListener("DOMContentLoaded", () => {
+    fetchData();
+});
 
-    // Funtion-kan wuxuu soo shubayaa luqadaha la heli karo isagoo isticmaalaya "Get Languages" API
-    // Tan waxay ku dhex jiri doontaa function async ah si loo waco fetch.
-    async function fetchAndPopulateLanguages() {
-        const languagesUrl = `https://${RAPIDAPI_HOST}/languages`;
-        const languagesOptions = {
-            method: 'GET',
-            headers: {
-                'x-rapidapi-key': RAPIDAPI_KEY,
-                'x-rapidapi-host': RAPIDAPI_HOST
-            }
-        };
 
-        try {
-            const response = await fetch(languagesUrl, languagesOptions);
-            if (!response.ok) {
-                let errorDetails = await response.text();
-                try {
-                    const errorJson = JSON.parse(errorDetails);
-                    errorDetails = errorJson.message || JSON.stringify(errorJson);
-                } catch (e) {
-                    // It's plain text, not JSON
-                }
-                throw new Error(`Failed to fetch languages: ${response.status} - ${errorDetails}`);
-            }
-            const result = await response.json();
+// Function to fetch available languages from the translation API
+const fetchData = async () => {
+  const url = "https://microsoft-translator-text-api3.p.rapidapi.com/languages";
+    const options = {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key": "33928d43a1mshfc0bcb94acfafbdp1081e7jsn9010971be2cd",// Replace with your RapidAPI key
+          "x-rapidapi-host": "microsoft-translator-text-api3.p.rapidapi.com",
+            
+        },
+    };
 
-            const languages = Object.entries(result.translation).map(([code, details]) => ({
-                code: code,
-                name: details.name
-            })).sort((a, b) => a.name.localeCompare(b.name));
+    try {
+        // Fetch the language data
+        const response = await fetch(url, options);
+        const result = await response.json(); // Parse the JSON response
+        console.log(result); // Log the result for debugging
 
-            fromLanguageSelect.innerHTML = '';
-            toLanguageSelect.innerHTML = '';
-
-            languages.forEach(lang => {
-                const optionFrom = document.createElement('option');
-                optionFrom.value = lang.code;
-                optionFrom.textContent = lang.name;
-                fromLanguageSelect.appendChild(optionFrom);
-
-                const optionTo = document.createElement('option');
-                optionTo.value = lang.code;
-                optionTo.textContent = lang.name;
-                toLanguageSelect.appendChild(optionTo);
-            });
-
-            fromLanguageSelect.value = 'en'; // Default to English
-            toLanguageSelect.value = 'so';   // Default to Somali
-            if (!toLanguageSelect.value) { // Fallback if Somali is not found
-                toLanguageSelect.selectedIndex = 0;
-            }
-
-        } catch (error) {
-            console.error('Error fetching languages:', error);
-            fromLanguageSelect.innerHTML = '<option value="">Error loading languages</option>';
-            toLanguageSelect.innerHTML = '<option value="">Error loading languages</option>';
-            translatedTextOutput.textContent = 'Could not load languages. Please check your API key, internet connection, or RapidAPI quota.';
-            alert('Waxa dhacday cilad markii la soo shubayay luqadaha. Fadlan hubi API Key-gaaga ama isku xirkaaga internetka.');
-        }
+        // Extract language names and their short codes
+        const lang = result.translation;
+        
+        // Populate the dropdown menus with the fetched languages
+        addToDomLang(lang);
+    } catch (error) {
+        console.error(error); // Log any errors that occur during fetch
     }
+};
 
-    // Call the function to load languages when the page loads
-    fetchAndPopulateLanguages();
+// Function to add language options to the dropdown menus
+const addToDomLang = (languages) => {
 
-    // Event listener for the Translate button
-    translateBtn.addEventListener('click', async () => {
-        const fromLang = fromLanguageSelect.value;
-        const toLang = toLanguageSelect.value;
-        const text = textToTranslateInput.value.trim();
+    // Add languages to the "from" dropdown
+    for (let lang in languages) {
+        const option = document.createElement("option");
+        option.textContent = languages[lang].name; // Set the text of the option to the language name
+        option.value = lang; //Set the value of the option to the language name
+        fromLang.appendChild(option);
+        // console.log(lang); 
+    }
+    // Add languages to the "from" dropdown
+    for (let lang in languages) {
+        const option = document.createElement("option");
+        option.textContent = languages[lang].name; // Set the text of the option to the language name
+        option.value = lang; //Set the value of the option to the language name
+        ToLang.appendChild(option);
+        // console.log(lang); 
+    }
+   
+};
 
-        if (text === '') {
-            translatedTextOutput.textContent = 'Fadlan geli qoraal aad rabto inaad tarjumto.';
-            return;
+// Event listener for form submission to translate text
+document.querySelector("#translate-form").addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    // Select the text input and result display elements
+    const translateText = document.querySelector("#transale-text");
+    const translateResult = document.querySelector("#translate-result");
+
+    // Prepare the translation request URL
+    const url = `https://microsoft-translator-text-api3.p.rapidapi.com/translate?to=${ToLang.value}&from=${fromLang.value}`;
+    const options = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",// Set content type to JSON
+            "x-rapidapi-key": "33928d43a1mshfc0bcb94acfafbdp1081e7jsn9010971be2cd", // Replace with your RapidAPI key
+            "x-rapidapi-host": "microsoft-translator-text-api3.p.rapidapi.com",
+      
+        },
+        body: JSON.stringify([{ text: translateText.value }]), // Body of the request
+    };
+
+    try {
+        // Send the translation request
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+         // Parse the JSON response
+
+        // Check if the input text is empty and alert the user
+        if (translateText.value.trim() === "") {
+            alert("Enter text to translate");
+        } else {
+            // Display the translation result
+            result.forEach((el) => {
+                translateResult.textContent = el.translations[0].text;
+            });
         }
-        if (!fromLang || !toLang) {
-            translatedTextOutput.textContent = 'Fadlan dooro labada luqadood ee aad rabto inaad u kala tarjumto.';
-            return;
-        }
-
-        translatedTextOutput.textContent = 'Tarjumaya...'; // Display a loading message
-
-        // Using the "Large Text Translation" API endpoint
-        const translateUrl = `https://${RAPIDAPI_HOST}/largetranslate?to=${toLang}&from=${fromLang}`;
-        const translateOptions = {
-            method: 'POST',
-            headers: {
-                'x-rapidapi-key': RAPIDAPI_KEY,
-                'x-rapidapi-host': RAPIDAPI_HOST,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                sep: '|', // Required by the API, even for single text.
-                text: text // The text to be translated
-            })
-        };
-
-        try {
-            const response = await fetch(translateUrl, translateOptions);
-
-            if (!response.ok) {
-                let errorDetails = await response.text();
-                try {
-                    const errorJson = JSON.parse(errorDetails);
-                    errorDetails = errorJson.message || JSON.stringify(errorJson);
-                } catch (e) {
-                    // It's plain text, not JSON
-                }
-                throw new Error(`Translation API Error: ${response.status} - ${errorDetails}`);
-            }
-
-            const translatedResult = await response.text(); // The result is plain text
-            translatedTextOutput.textContent = translatedResult;
-
-        } catch (error) {
-            console.error('Error during translation:', error);
-            translatedTextOutput.textContent = `Waxa dhacday cilad: ${error.message}. Fadlan isku day mar kale.`;
-            alert(`Waxa dhacday cilad: ${error.message}. Hubi consol-ka wixii faahfaahin ah.`);
-        }
-    });
+    } catch (error) {
+        console.error(error); // Log any errors that occur during the translation
+    }
 });
